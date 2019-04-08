@@ -1,6 +1,8 @@
 node {
   def server = Artifactory.server 'vpra80.jfrog.io'
-  def myGradleContainer = docker.image('gradle:jdk8-alpine')
+  // def myGradleContainer = docker.image('gradle:jdk8-alpine')
+   def myGradleContainer = docker.image('gradle:5.3-jdk8-alpine')
+  // 5.3-jdk8-alpine
   myGradleContainer.pull()
   stage('prep') {
     checkout scm
