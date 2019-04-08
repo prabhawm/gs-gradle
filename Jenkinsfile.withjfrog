@@ -8,15 +8,13 @@ node {
     checkout scm
   }
   stage('build') {
-     myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-       run myGradleContainer add bash
-       bash 'cd complete && ./gradlew build'
+     myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {       
+       sh 'cd complete && ./gradlew build'
      }
   }
   stage('test') {
-     myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-       run myGradleContainer add bash
-       bash 'cd complete && ./gradlew test'
+     myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {      
+       sh 'cd complete && ./gradlew test'
      }
   }
   stage('publish') {
