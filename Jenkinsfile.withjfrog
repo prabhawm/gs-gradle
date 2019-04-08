@@ -7,13 +7,13 @@ node {
   }
   stage('build') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-       run myGradleContainer add --no-cache bash
+       run myGradleContainer add bash
        bash 'cd complete && ./gradlew build'
      }
   }
   stage('test') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-       run myGradleContainer add --no-cache bash
+       run myGradleContainer add bash
        bash 'cd complete && ./gradlew test'
      }
   }
